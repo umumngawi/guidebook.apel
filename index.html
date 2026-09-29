@@ -190,6 +190,33 @@
     pointer-events: none; opacity: 0.1; z-index: 0;
   }
 
+  /* ── Footer link ── */
+  #footer-link {
+    display: none;
+    margin-top: 18px;
+    text-align: center;
+  }
+  #footer-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--navy);
+    color: var(--white);
+    text-decoration: none;
+    padding: 11px 22px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: background 0.18s;
+  }
+  #footer-link a:hover { background: var(--blue); }
+  #footer-link a svg { flex-shrink: 0; }
+  #footer-link p {
+    margin-top: 7px;
+    color: var(--steel);
+    font-size: 0.75rem;
+  }
+  
   @media (max-width: 500px) {
     #book { width: 88vw !important; height: calc(88vw * 1.414) !important; }
   }
@@ -205,8 +232,8 @@
 
 <header>
   <div class="header-arrow"></div>
-  <h1>Guide Book Dokumentasi
-    <span>Bagian Umum — Sekretariat Daerah Kab. Ngawi</span>
+  <h1>Guide Book Dokumentasi Apel Rutin
+    <span>Sekretariat Daerah Kab. Ngawi</span>
   </h1>
 </header>
 
@@ -248,6 +275,17 @@
     </button>
   </div>
 </div>
+
+    <div id="footer-link">
+    <a href="https://umumngawi.github.io/apel/" target="_blank">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/>
+        <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/>
+      </svg>
+      Buka Aplikasi Presensi Apel
+    </a>
+    <p>umumngawi.github.io/apel/</p>
+  </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>
@@ -383,6 +421,7 @@ async function initPDF(source) {
   await fitBookToPage();
   loadingEl.style.display = 'none';
   viewerEl.style.display  = 'flex';
+  document.getElementById('footer-link').style.display = 'block';
 
   await renderPage(1, document.getElementById('canvas-main'));
   updateUI();
